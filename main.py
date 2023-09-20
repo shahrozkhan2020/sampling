@@ -7,7 +7,7 @@ numOfDesigns = 10
 popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
-s.PerformSJAYA(numOfPara,paraRange)
+s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot.png")
 print("Its done!")
 """
 # create the 2D array
