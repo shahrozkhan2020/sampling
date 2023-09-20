@@ -8,7 +8,7 @@ popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
 s.PerformSJAYA(numOfPara,paraRange)
-ptint("Its done!")
+print("Its done!")
 """
 # create the 2D array
 arr = np.zeros((rows, columns))
