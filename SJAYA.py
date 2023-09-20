@@ -6,7 +6,7 @@ class SJAYA:
         self.NumOfDesigns = NumOfDesigns
         self.SizeofPopulation = SizeofPopulation
 
-    def PerformSJAYA(self, NumOfParameters, ParaRange):
+    def PerformSJAYA(self, NumOfParameters, ParaRange, save_path=None):
         lower_limits = ParaRange[0]
         upper_limits = ParaRange[1]
         population = np.zeros((self.NumOfDesigns, self.SizeofPopulation,NumOfParameters))
@@ -24,7 +24,10 @@ class SJAYA:
                 population, allBestDesign, allWorstDesign = self.JayaAlgorithm(population, allBestDesign, allWorstDesign, popIndx, ParaRange, self.NumOfDesigns)
         plt.figure()
         plt.scatter(allBestDesign[:,0], allBestDesign[:,1])
-        plt.show()
+        if save_path:
+            plt.savefig(save_path)
+        else:
+            plt.show()
 
     def scaling(self, paraRange, arr):
         lower_limits = paraRange[0]
