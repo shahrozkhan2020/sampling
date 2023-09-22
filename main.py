@@ -9,8 +9,8 @@ popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
 for i in range(5):
-    s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot_{i}.png")
-    print("sampling {i} done!")
+    s.PerformSJAYA(numOfPara, paraRange, save_path=f"output_plot_{i}.png")
+    print(f"output_plot_{i}.png")
 
 base_path = "/home/ubuntu/test/sampling/"
 
