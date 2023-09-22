@@ -1,5 +1,6 @@
 from SJAYA import SJAYA
 import numpy as np
+import boto3
 
 paraRange = [[0, 0],[1 ,1]]
 numOfPara = len(paraRange[0])
@@ -8,7 +9,13 @@ popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
 s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot.png")
-print("Its done!")
+print("sampling done!")
+
+s3 = boto3.client('s3')
+with open("output_plot.png", "rb") as f:
+    s3.upload_fileobj(f, "samplingtestbucket", "s3://samplingtestbucket")
+print("File added to bucket!")
+
 """
 # create the 2D array
 arr = np.zeros((rows, columns))
