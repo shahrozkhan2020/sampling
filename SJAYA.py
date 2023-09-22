@@ -46,9 +46,14 @@ class SJAYA:
         return (sf + nc)
 
     def inverse_euclidean_distance(self, array1D, array2D):
-        distances = np.sum((array1D - array2D)**2, axis=1)
-        inverse_distances = 1 / distances
-        inverse_distances = np.where(distances == 0, 0, 1 / distances)
+        distances = np.sum((array1D - array2D) ** 2, axis=1)
+
+        # Handle division by zero
+        epsilon = np.finfo(float).eps
+        safe_distances = np.where(distances == 0, epsilon, distances)
+        inverse_distances = 1 / safe_distances
+        inverse_distances[distances == 0] = 0
+
         sum_inverse_distances = np.sum(inverse_distances)
         return sum_inverse_distances
 
