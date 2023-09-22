@@ -13,7 +13,7 @@ print("sampling done!")
 
 s3 = boto3.client('s3')
 with open("output_plot.png", "rb") as f:
-    s3.upload_fileobj(f, "samplingtestbucket", "s3://samplingtestbucket")
+    s3.upload_fileobj(f, "samplingtestbucket", "output_plot.png")
 print("File added to bucket!")
 
 """
