@@ -8,7 +8,7 @@ numOfDesigns = 10
 popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
-for i in range(5)
+for i in range(5):
     s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot_{i}.png")
     print("sampling {i} done!")
 
