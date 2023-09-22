@@ -8,14 +8,23 @@ numOfDesigns = 10
 popSize = 10
 
 s = SJAYA(numOfDesigns, popSize)
-s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot.png")
-print("sampling done!")
+for i in range(5)
+    s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot_{i}.png")
+    print("sampling {i} done!")
 
+base_path = "/home/ubuntu/test/sampling/"
+
+# Initialize the S3 client outside the loop, so you don't have to do it multiple times
 s3 = boto3.client('s3')
-file_path = "/home/ubuntu/test/sampling/output_plot.png"
-with open(file_path, "rb") as f:
-    s3.upload_fileobj(f, "samplingtestbucket", "output_plot.png")
-print("File added to bucket!")
+
+# Loop over the range of file indices
+for i in range(5):  # This will iterate over numbers 1 through 5
+    file_name = f"output_plot_{i}.png"
+    file_path = base_path + file_name
+
+    with open(file_path, "rb") as f:
+        s3.upload_fileobj(f, "samplingtestbucket", file_name)
+    print(f"File {file_name} added to bucket!")
 
 """
 # create the 2D array
