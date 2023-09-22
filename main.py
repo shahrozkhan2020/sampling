@@ -12,7 +12,8 @@ s.PerformSJAYA(numOfPara, paraRange, save_path="output_plot.png")
 print("sampling done!")
 
 s3 = boto3.client('s3')
-with open("output_plot.png", "rb") as f:
+file_path = "/home/ubuntu/test/sampling/output_plot.png"
+with open(file_path, "rb") as f:
     s3.upload_fileobj(f, "samplingtestbucket", "output_plot.png")
 print("File added to bucket!")
 
